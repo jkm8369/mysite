@@ -22,6 +22,7 @@ public class MainController {
 	public String index() {
 		System.out.println("MainController.index()");
 		
+		
 		return "main/index";
 	}
 	
