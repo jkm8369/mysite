@@ -36,15 +36,25 @@ public class UserRepository {
 		return authUser;
 	}
 	
-	public UserVO userSelectOne(int personId) {
+	//user 정보 가져오기(no) --> 회원수정 폼
+	public UserVO userSelectOneByNo(int no) {
 		System.out.println("UserRepository.userSelectOne()");
+		//System.out.println(no);
 		
-		UserVO userVO = sqlSession.selectOne("user.selectOne", personId);
+		UserVO userVO = sqlSession.selectOne("user.userSelectOneByNo", no);
 		
 		
 		return userVO;
 	}
 	
+	public int userUpdate(UserVO userVO) {
+		System.out.println("userRepository.userUpdate()");
+		//System.out.println(userVO);
+		
+		int count = sqlSession.update("user.update", userVO);
+		
+		return count;
+	}
 	
 	
 	

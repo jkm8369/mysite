@@ -34,12 +34,21 @@ public class UserService {
 		return authUser;
 	}
 	
-	public UserVO exeModifyForm(int personId) {
-		System.out.println("userService.exeModify()");
+	//회원정보 폼
+	public UserVO exeEditForm(int no) {
+		System.out.println("userService.exeEditForm()");
 		
-		UserVO userVO = userRepository.userSelectOne(personId);
+		
+		UserVO userVO = userRepository.userSelectOneByNo(no);
 		
 		return userVO;
+	}
+	
+	public int exeEdit(UserVO userVO) {
+		System.out.println("userService.exeEdit()");
+		
+		int count = userRepository.userUpdate(userVO);
+		return count;
 	}
 	
 	

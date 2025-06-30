@@ -4,7 +4,7 @@
 
 <header class="clearfix">
 
-<h1><a href="/">MySite</a></h1>
+<h1><a href="${pageContext.request.contextPath}/">MySite</a></h1>
        
 	<%-- ${!empty sessionScope.authUser } --%>
   	<%-- ${sessionScope.authUser != null } --%>
@@ -17,7 +17,7 @@
 			<a class="btn btn-white btn-sm" href="/user/logout">로그아웃</a>
         </li>
         <li>
-            <a class="btn btn-white btn-sm" href="/user/modify">정보수정</a>
+            <a class="btn btn-white btn-sm" href="${pageContext.request.contextPath}/user/editform">정보수정</a>
         </li>
     </ul>
 
@@ -63,7 +63,7 @@
 <nav>
 	<ul class="clearfix">
         <li><a href="">입사지원서</a></li>
-        <li><a href="">게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/board/list">게시판</a></li>
         <li><a href="">갤러리</a></li>
         <li><a href="">방명록</a></li>
     </ul>

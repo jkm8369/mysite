@@ -78,7 +78,7 @@
                 </main>
             </div>
             
-           <!-- footer -->
+            <!-- footer -->
             <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 			<!--// footer -->
 
