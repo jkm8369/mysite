@@ -8,7 +8,7 @@ import com.javaex.vo.UserVO;
 
 @Service
 public class UserService {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -34,6 +34,13 @@ public class UserService {
 		return authUser;
 	}
 	
+	public UserVO exeModifyForm(int personId) {
+		System.out.println("userService.exeModify()");
+		
+		UserVO userVO = userRepository.userSelectOne(personId);
+		
+		return userVO;
+	}
 	
 	
 	

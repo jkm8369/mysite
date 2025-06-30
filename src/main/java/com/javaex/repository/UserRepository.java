@@ -36,6 +36,14 @@ public class UserRepository {
 		return authUser;
 	}
 	
+	public UserVO userSelectOne(int personId) {
+		System.out.println("UserRepository.userSelectOne()");
+		
+		UserVO userVO = sqlSession.selectOne("user.selectOne", personId);
+		
+		
+		return userVO;
+	}
 	
 	
 	

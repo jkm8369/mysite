@@ -3,9 +3,11 @@ package com.javaex.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVO;
@@ -86,7 +88,18 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
+	//--수정폼
+	@RequestMapping(value= "/user/mform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm(@RequestParam(value= "no") int personId, Model model) {
+		System.out.println("UserController.modifyForm()");
+		
+		UserVO userVO = userService.exeModifyForm(personId);
+		
+		model.addAttribute("userVO", userVO);
+		
+		
+		return "";
+	}
 	
 	
 	

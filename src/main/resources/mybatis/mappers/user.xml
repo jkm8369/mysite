@@ -24,5 +24,17 @@
 	</select>
 	
 	
+	<!-- 
+	<select id="selectOne" parameterType="int", resultType="userVO">
+		<![CDATA[
+			select no,
+				   password,
+				   id
+			from users
+			where no = #{no}
+		]]>
+	</select> 
+	-->
+	
 	
 </mapper>
