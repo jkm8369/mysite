@@ -63,6 +63,7 @@ select b.no,
        u.name as userName
 from users u, board b
 where u.no = b.user_no
+order by no asc
 ;
 
 select u.name as userName,
@@ -78,4 +79,6 @@ and b.no = 3
 delete from board
 where no = 3
 ;
+
+
 

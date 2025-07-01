@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,10 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	//--게시판 리스트 출력
+	//--게시판 전체 리스트
 	@RequestMapping(value="/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
-		System.out.println("BoardController.boardList()");
+		System.out.println("BoardController.List()");
 		
 		List<BoardVO> boardList = boardService.exeList();
 		
@@ -32,6 +33,22 @@ public class BoardController {
 		
 		return "board/list";
 	}
+	
+	@RequestMapping(value="/list2", method= {RequestMethod.GET, RequestMethod.POST})
+	//--게시판 전체 리스트2 (페이징)
+	public String list2(@RequestParam(value="crtpage", required = false, defaultValue = "1")int crtPage, Model model) {
+		System.out.println("BoardController.List2()");
+		
+		Map<String, Object> pMap = boardService.exeList2(crtPage);
+		
+		System.out.println(pMap);
+		
+		model.addAttribute("pMap", pMap);
+		
+		
+		return "board/list2";
+	}
+	
 	
 	
 	//--삭제
@@ -50,7 +67,9 @@ public class BoardController {
 	public String read(@RequestParam(value="content")String content, Model model) {
 		System.out.println("BoardController.read()");
 		
-		BoardVO boardVO = boardService.exeRead();
+		
+		
+		
 		
 		return "";
 	}
