@@ -63,7 +63,6 @@ select b.no,
        u.name as userName
 from users u, board b
 where u.no = b.user_no
-order by no asc
 ;
 
 select u.name as userName,
@@ -76,61 +75,11 @@ where u.no= b.user_no
 and b.no = 3
 ;
 
-delete from board
+delete from users
 where no = 3
+and password = 1111
 ;
 
-select b.no,
-       b.title,
-       b.content,
-       b.hit,
-       date_format(b.reg_date, "%Y-%m-%d") as regDate,
-       u.no as userNo,
-       u.name as userName
-from users u, board b
-where u.no = b.user_no
-order by no asc
-limit 0, 10
-;
-
--- 1  (0, 10)
--- 2  (11, 20)
-
--- listCnt = 10 한페이지에 출력되는 갯수
--- crtPage 1 --> 0 10
--- crtPage 2 --> 10 10
--- crtPage 3 --> 20 10
-
--- 시작글번호 = (crtPage-1)*listCnt
---           1         10 0
---           2         20 10
---           3         30 20
-
--- 시작글번호 = (crtPage-1)*listCnt
--- listCnt
-
--- 전체 글 갯수 구하기
-select count(*) count 
-from board
-;
-
-select count(*)
-from board
-where title like '%12%'
-;
-
-select b.no,
-	   b.title,
-	   b.content,
-	   b.hit,
-	   date_format(b.reg_date, "%Y-%m-%d") as regDate,
-	   u.no as userNo,
-	   u.name as userName
-from users u, board b
-where u.no = b.user_no
-and title like '%12%'
-limit 10, 10
-;
 
 
 

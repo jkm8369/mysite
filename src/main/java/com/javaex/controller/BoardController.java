@@ -34,8 +34,8 @@ public class BoardController {
 		return "board/list";
 	}
 	
-	@RequestMapping(value="/list2", method= {RequestMethod.GET, RequestMethod.POST})
 	//--게시판 전체 리스트2 (페이징)
+	@RequestMapping(value="/list2", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list2(@RequestParam(value="crtpage", required = false, defaultValue = "1")int crtPage, Model model) {
 		System.out.println("BoardController.List2()");
 		
@@ -49,7 +49,24 @@ public class BoardController {
 		return "board/list2";
 	}
 	
-	
+	//--게시판 전체 리스트3 (페이징 + 검색)
+	@RequestMapping(value="/list3", method= {RequestMethod.GET, RequestMethod.POST})
+	public String list3(@RequestParam(value="crtpage", required = false, defaultValue = "1") int crtPage, 
+						@RequestParam(value="kwd", required = false, defaultValue = "") String kwd,
+						Model model ) {
+		System.out.println("BoardController.list3()");
+		
+		Map<String, Object> pMap = boardService.exeList3(crtPage, kwd);
+		System.out.println("-------------------------------");
+		System.out.println(pMap);
+		System.out.println("-------------------------------");
+		
+		
+		model.addAttribute("pMap", pMap);
+		
+		return "board/list3";
+	}
+
 	
 	//--삭제
 	@RequestMapping(value="/delete", method= {RequestMethod.GET, RequestMethod.POST})
@@ -57,7 +74,7 @@ public class BoardController {
 		System.out.println("BoardController.delete()");
 		
 		
-		boardService.exeDelete(boardVO);
+		//boardService.exeDelete(boardVO);
 		
 		return "redirect:/board/list";
 	}

@@ -16,7 +16,7 @@ public class BoardServiceRe {
 	@Autowired
 	private BoardRepositoryRe boardRepositoryRe;
 	
-	
+	//--전체 리스트
 	public List<BoardVO> exeList() {
 		System.out.println("BoardRepositoryRe.exeList()");
 		
@@ -25,6 +25,7 @@ public class BoardServiceRe {
 		return boardList;
 	}
 	
+	//--전체리스트 (페이징)
 	public Map<String, Object> exeList2(int crtPage) {
 		System.out.println("BoardServiceRe.exeList2()");
 		
