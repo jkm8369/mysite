@@ -7,9 +7,14 @@
     <head>
         <meta charset="UTF-8">
         <title>MySite</title>
+        <!-- css -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mysite.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user.css">
+        
+        <!-- js -->
+        <script src="${pageContext.request.contextPath}/assets/js/jquery/jquery-3.7.1.js"></script>
+        
     </head>
 
     <body>
@@ -45,7 +50,9 @@
                             <div class="info-row">
                                 <label class="info-title" for="txt-idcheck">아이디</label>
                                 <input id="txt-idcheck" type="text" name="id" value="">
-                                <button id="" class="btn btn-gray btn-input"  type="button">중복체크</button>
+                                <button id="btnCheck" class="btn btn-gray btn-input"  type="button">중복체크</button>
+                                <p id="checkMsg"></p>
+                                
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
@@ -83,6 +90,60 @@
 			<!--// footer -->
 
         </div>
-     
+<!-- --------------------------------------------------------------------------------------- -->
+<script>
+//돔이 완료 되었을 때
+$(document).ready(function(){
+	console.log('돔트리 완성');
+	
+	//아이디 체크 버튼을 클릭했을 때
+	$('#btnCheck').on('click', function(){
+		console.log('아이디 체크 버튼 클릭');
+		
+		//입력한 id
+		let id = $('#txt-idcheck').val();
+		console.log(id);
+		
+		console.log('서버랑 통신');
+		
+		/* 서버랑 통신(주소치고엔터) -->!!!!!!!!! 데이터만 받을거야!!!!!!!!!! */
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath}/user/idcheck",		
+			type : "post",
+			//contentType : "application/json",
+			data : {id: id},
+
+			dataType : "json",
+			success : function(result){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(result);
+				
+				/* 상황에 맞는 메세지 출력
+				--> 저 위에 있는 html 사이에 html 출력해줘야한다 */
+				if(result.isUse == true){
+					$('#checkMsg').html('사용할 수 있는 아이디입니다.');
+					$('#checkMsg').css('color', '#0000ff');
+					$('#checkMsg').css('font-weight', 'bold');
+					
+				} else {
+					$('#checkMsg').text('이미 사용중인 아이디입니다.');
+				}
+				
+				
+				
+				console.log(result.isUse);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+	});
+	
+	
+});
+
+</script> 
     </body>
 </html>

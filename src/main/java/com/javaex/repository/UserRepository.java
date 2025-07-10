@@ -41,12 +41,13 @@ public class UserRepository {
 		System.out.println("UserRepository.userSelectOne()");
 		//System.out.println(no);
 		
-		UserVO userVO = sqlSession.selectOne("user.userSelectOneByNo", no);
+		UserVO userVO = sqlSession.selectOne("user.selectOneByNo", no);
 		
 		
 		return userVO;
 	}
 	
+	//--회원정보수정
 	public int userUpdate(UserVO userVO) {
 		System.out.println("userRepository.userUpdate()");
 		//System.out.println(userVO);
@@ -56,8 +57,14 @@ public class UserRepository {
 		return count;
 	}
 	
-	
-	
+	//--아이디 사용유무 체크(회원가입)
+	public UserVO userSelectById(String id) {
+		System.out.println("UserRepository.userSelectById()");
+		
+		UserVO userVO = sqlSession.selectOne("user.selectOneById", id);
+		
+		return userVO;
+	}
 	
 	
 	

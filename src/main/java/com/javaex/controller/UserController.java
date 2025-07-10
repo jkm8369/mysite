@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVO;
@@ -14,6 +16,7 @@ import com.javaex.vo.UserVO;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping(value = "/user")
 public class UserController {
 
 	@Autowired
@@ -22,7 +25,7 @@ public class UserController {
 	
 	//메소드 일반
 	//--가입 폼
-	@RequestMapping(value="user/joinform", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/joinform", method= {RequestMethod.GET, RequestMethod.POST})
 	public String joinForm() {
 		System.out.println("UserController.joinform()");
 		
@@ -31,7 +34,7 @@ public class UserController {
 	}
 	
 	//--회원가입
-	@RequestMapping(value= "user/join", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value= "/join", method= {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute UserVO userVO) {
 		System.out.println("UserController.join()");
 		
@@ -53,7 +56,7 @@ public class UserController {
 	}
 	
 	//--로그인 폼
-	@RequestMapping(value="user/loginform", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/loginform", method= {RequestMethod.GET, RequestMethod.POST})
 	public String loginform() {
 		System.out.println("UserController.loginform()");
 		
@@ -63,7 +66,7 @@ public class UserController {
 	}
 	
 	//--로그인
-	@RequestMapping(value="user/login", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/login", method= {RequestMethod.GET, RequestMethod.POST})
 	public String login(@ModelAttribute UserVO userVO, HttpSession session) {
 		System.out.println("UserController.login()");
 		
@@ -77,7 +80,7 @@ public class UserController {
 	}
 	
 	//--로그아웃
-	@RequestMapping(value="user/logout", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/logout", method= {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session) {
 		System.out.println("UserController.logout()");
 		
@@ -88,7 +91,7 @@ public class UserController {
 	}
 	
 	//--회원정보수정폼
-	@RequestMapping(value= "/user/editform", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value= "/editform", method = {RequestMethod.GET, RequestMethod.POST})
 	public String editForm(HttpSession session, Model model) {
 		System.out.println("UserController.editForm()");
 		
@@ -121,7 +124,7 @@ public class UserController {
 	}
 	
 	//--회원정보수정
-	@RequestMapping(value="user/edit", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/edit", method= {RequestMethod.GET, RequestMethod.POST})
 	public String edit(@ModelAttribute UserVO userVO, HttpSession session) {
 		System.out.println("UserController.edit()");
 		
@@ -155,7 +158,30 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
+	//--아이디 사용유무 체크(회원가입) --> 데이터만 응답
+	@ResponseBody
+	@RequestMapping(value = "/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String idcheck(@RequestParam(value="id") String id, Model model) {
+		System.out.println("UserController.idcheck()");
+		
+		boolean isUse = userService.exeIdCheck(id);
+		System.out.println(isUse);
+		
+		
+		//기본방식 --> 이렇게 안한다
+		//모델에 담으면 jsp에서 꺼내서 jsp를 가지고 공식 응답문서를 만든다
+		//model.addAttribute("isUse", isUse);  //model --> jsp에 전달의미 지금은 아니다
+		
+		//데이터(json형식)만 보내준다 (html 없음)
+		//json형식 {"isUse": true}
+		
+		String result = "{\"isUse\": "+isUse+"}";
+		//@ResponseBody 상단에 붙이고 데이터는 return으로 보낸다
+		
+		
+		
+		return result;
+	}
 	
 	
 	

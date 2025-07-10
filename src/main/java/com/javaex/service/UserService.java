@@ -44,6 +44,7 @@ public class UserService {
 		return userVO;
 	}
 	
+	//--회원정보수정
 	public int exeEdit(UserVO userVO) {
 		System.out.println("userService.exeEdit()");
 		
@@ -51,8 +52,22 @@ public class UserService {
 		return count;
 	}
 	
-	
-	
+	//--아이디 사용유무 체크(회원가입)
+	public boolean exeIdCheck(String id) {
+		System.out.println("UserService.exeIdCheck()");
+		
+		UserVO userVO = userRepository.userSelectById(id);
+		
+		if(userVO == null) {
+			//사용할 수 있는 아이디
+			return true;
+		} else {
+			//사용중인 아이디
+			return false;
+		}
+		
+		
+	}
 	
 	
 	
