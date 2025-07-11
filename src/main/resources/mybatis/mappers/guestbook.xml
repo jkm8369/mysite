@@ -33,8 +33,32 @@
 		]]>
 	</delete>
 	
+	<!-- 방명록 등록 키 가져오기 -->
+	<insert id="insertKey" parameterType="com.javaex.vo.GuestbookVO">
+		<![CDATA[
+			insert into guestbook
+			values(null, #{name}, #{password}, #{content}, now())
+		]]>
+		
+		<selectKey keyProperty="no" resultType="int" order="AFTER">
+			<![CDATA[
+				select last_insert_id()
+			]]>
+		</selectKey>
+	</insert>
 	
 	
+	<!-- 글 1개 가져오기 -->
+	<select id="selectOne" parameterType="int" resultType="com.javaex.vo.GuestbookVO">
+		<![CDATA[
+			select no,
+				   name,
+				   content,
+				   reg_date regDate
+			from guestbook
+			where no = #{no}
+		]]>
+	</select>
 	
 
 </mapper>

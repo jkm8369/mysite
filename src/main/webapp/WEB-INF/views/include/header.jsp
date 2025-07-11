@@ -65,6 +65,6 @@
         <li><a href="">입사지원서</a></li>
         <li><a href="${pageContext.request.contextPath}/board/list3">게시판</a></li>
         <li><a href="">갤러리</a></li>
-        <li><a href="${pageContext.request.contextPath}/guestbook/list">방명록</a></li>
+        <li><a href="${pageContext.request.contextPath}/ajaxguestbook">방명록</a></li>
     </ul>
 </nav>

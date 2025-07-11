@@ -23,7 +23,7 @@ public class GuestbookController {
 	public String list(Model model) {
 		System.out.println("GuestbookController.list()");
 		
-		List<GuestbookVO> guestbookList = guestbookService.exeList();	
+		List<GuestbookVO> guestbookList = guestbookService.exeGuestbookList();	
 		
 		model.addAttribute("gList", guestbookList);
 		
@@ -36,7 +36,7 @@ public class GuestbookController {
 	public String add(@ModelAttribute GuestbookVO guestbookVO) {
 		System.out.println("GuestbookController.add()");
 		
-		guestbookService.exeAdd(guestbookVO);
+		guestbookService.exeGuestbookAdd(guestbookVO);
 		
 		return "redirect:/guestbook/list";
 	}
@@ -54,7 +54,7 @@ public class GuestbookController {
 	public String remove(GuestbookVO guestbookVO) {
 		System.out.println("GuestbookController.remove()");
 		
-		guestbookService.exeRemove(guestbookVO);
+		guestbookService.exeGuestbookRemove(guestbookVO);
 		return "redirect:/guestbook/list";
 	}
 	

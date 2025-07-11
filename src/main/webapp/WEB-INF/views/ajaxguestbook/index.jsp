@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mysite.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/guestbook.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/modal.css">
 <script src="${pageContext.request.contextPath}/assets/js/jquery/jquery-3.7.1.js"></script>
 </head>
 
@@ -41,7 +42,7 @@
 				</div>
 
 				<div id="guestbook-addlist">
-					<form class="form-box" action="${pageContext.request.contextPath}/guestbook/add" method="get">
+					<form id="formAdd" class="form-box" action="" method="get">
 						<table>
 							<colgroup>
 								<col style="width: 70px;">
@@ -105,6 +106,27 @@
 
 	</div>
 	<!-- ---------------------------------------------------------------------------- -->
+	<!-- 모달창 -->
+	<div class="modal-bg">
+		
+		<div class="modal-content">
+			<p>비밀번호를 입력해 주세요</p>
+			
+			<div>
+				<input type="password" name="" value="">
+			</div>
+			<button>삭제</button>
+			<button>닫기</button>
+			
+		</div>
+	
+	</div>
+	
+	
+	
+	
+	
+	<!-- ---------------------------------------------------------------------------- -->
 	<script>
 		
 		$(document).ready(function() {
@@ -118,7 +140,58 @@
 
 				//http://localhost:8888/api/guestbook/list
 
-			})
+			});
+			
+			//등록 버튼을 클릭했을 때
+			$('#formAdd').on('submit', function(event){
+				console.log('클릭');
+				event.preventDefault();
+				
+				//value값 수집
+				let name = $('#txt-name').val();
+				let pw = $('#txt-password').val();
+				let content = $('#text-content').val();
+				
+				//VO묶기
+				let guestbookVO = {
+						name: name,
+						password: pw,
+						content: content
+				};
+				
+				console.log(guestbookVO);
+				
+				//서버에 저장 요청
+				$.ajax({
+					
+					url : '${pageContext.request.contextPath}/api/guestbook/add',		
+					type : 'post',
+					//contentType : "application/json",
+					data : guestbookVO,
+
+					dataType : 'json',
+					success : function(guestbookVO){
+						/*성공시 처리해야될 코드 작성*/
+						//화면에 그리기
+						render(guestbookVO, 'up');
+						
+						//입력폼 비우기
+						$('#txt-name').val('');
+						$('#txt-password').val('');
+						$('#txt-content').val('');
+					},
+					
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+					
+				});
+
+				
+				
+			});
+			
+			
 
 		});
 
@@ -138,10 +211,11 @@
 					
 					//화면에 그린다
 					for(let i=0; i<guestbookList.length; i++) {
-						render(guestbookList[i]);
+						render(guestbookList[i], 'down');
 					}
 					
 				},
+				
 				error : function(XHR,status,error) {
 					console.error(status+ " : "+ error);
 				}
@@ -153,7 +227,7 @@
 
 		
 		//guestbookVO 1개를 화면에 그린다
-		function render(guestbookVO) {
+		function render(guestbookVO, updown) {
 			console.log('guestbookVO');
 			console.log('그린다');
 
@@ -184,7 +258,15 @@
 
 			str += '</table>';
 
-			$('#gbListArea').append(str);
+			if(updown == 'up') {
+				$('#gbListArea').prepend(str);
+			} else if(updown == 'down') {
+				$('#gbListArea').append(str);
+			} else {
+				console.log('방향체크');
+			}
+			
+			
 
 		}
 	</script>
