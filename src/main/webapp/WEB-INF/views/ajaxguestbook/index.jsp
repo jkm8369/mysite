@@ -72,7 +72,9 @@
 
 					<button id="btnList" class="btn btn-blue btn-md" type="button">전체데이터요청</button>
 
-					<div id="gbListArea"></div>
+					<div id="gbListArea">
+						<!-- 리스트가 출력되는 자리 -->
+					</div>
 
 					<c:forEach items="${requestScope.gList}" var="guestbookVO">
 						<table class="guestbook-item">
@@ -112,11 +114,16 @@
 		<div class="modal-content">
 			<p>비밀번호를 입력해 주세요</p>
 			
-			<div>
-				<input type="password" name="" value="">
-			</div>
-			<button>삭제</button>
-			<button>닫기</button>
+			<form id="modalForm" action="" method="">
+				<div>
+					<input type="password" name="password" value="">
+					<input type="text" name="no" value="">
+				</div>
+				<button type="submit" class="btn-del btn btn-blue btn-md">삭제</button>
+				<button class="btn-close btn btn-gray btn-md">닫기</button>
+			</form>
+			
+			
 			
 		</div>
 	
@@ -178,7 +185,7 @@
 						//입력폼 비우기
 						$('#txt-name').val('');
 						$('#txt-password').val('');
-						$('#txt-content').val('');
+						$('#text-content').val('');
 					},
 					
 					error : function(XHR, status, error) {
@@ -191,8 +198,85 @@
 				
 			});
 			
+			/* 삭제(모달창 띄우기) 버튼을 클릭했을 때 --> 삭제모달창 */
+			$('#gbListArea').on('click','.btn-modal', function(){
+				console.log('모달창');
+				
+				$('.modal-bg').addClass('active');
+				
+				//내가 가지고 있는 no 값을 / 모달창의 no값 넣는 input 박스에 넣어준다
+				let $this = $(this);
+				let no = $this.data('no');
+				console.log(no);
+				
+				//번호 추가
+				$('[name="no"]').val(no);
+				
+				//패스워드는 비운다
+				$('#modalForm input[name="password"]').val('');
+				
+			});
 			
+			
+			//모달창의 닫기 버튼을 클릭했을 때
+			$('.btn-close').on('click', function(){
+				console.log('모달창의 닫기버튼 클릭');
+				
+				$('.modal-bg').removeClass('active');
+				
+			});
+			
+			//모달창의 삭제 버튼을 클릭했을 때 (진짜 삭제)
+			$('#modalForm').on('submit', function(evnet){
+				console.log('삭제버튼 클릭');
+				
+				event.preventDefault();
+				
+				//데이터 수집
+				/* 
+				<input type="password" name="password" value="">
+				<input type="text" name="no" value=""> 
+				*/
+					
+				let pw = $('#modalForm input[name="password"]').val();
+				let no = $('#modalForm input[name="no"]').val();
+				
+				let guestbookVO = {
+						no: no,
+						password: pw
+				};
+				
+				//console.log(guestbookVO);
+				//전송
+				$.ajax({
+					
+					url : '${pageContext.request.contextPath}/api/guestbook/remove',		
+					type : 'post',
+					//contentType : 'application/json',
+					data : guestbookVO,
 
+					dataType : 'json',
+					success : function(result){
+					    /*성공시 처리해야될 코드 작성*/
+					    console.log(result);
+					    
+					    if(result == 1) {
+						    //리스트에서 선택한거 화면에서 지우기
+						    $('#t'+no).remove();  //아이디를 매칭시킨다
+					    }
+					    
+					  	//모달창 닫기
+					    $('.modal-bg').removeClass('active');
+					},
+					error : function(XHR, status, error) {
+						console.error(status + ' : ' + error);
+					}
+				});
+
+				
+				
+			});
+			
 		});
 
 		//리스트 데이터 요청해서 그리는 함수
@@ -233,7 +317,7 @@
 
 			let str = '';
 
-			str += '<table class="guestbook-item">';
+			str += '<table id="t'+guestbookVO.no+'" class="guestbook-item">';
 			str += '		<colgroup>';
 			str += '			<col style="width: 10%;">';
 			str += '			<col style="width: 40%;">';
@@ -247,7 +331,9 @@
 			str += '				<td>' + guestbookVO.name + '</td>';
 			str += '				<td>' + guestbookVO.regDate + '</td>';
 			str += '				<td class="txt-center">';
-			str += '						<a class="btn btn-gray btn-sm" href="${pageContext.request.contextPath}/guestbook/rform?no=${guestbookVO.no}">삭제</a>';
+			
+			str+= '						<button class="btn btn-modal btn-gray btn-sm" data-no="'+guestbookVO.no+'">삭제</button>';
+			
 			str += '				</td>';
 			str += '			</tr>';
 

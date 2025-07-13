@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .modal-bg{
-	display: block;
+	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -9,6 +9,11 @@
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.4);
 	z-index: 1000;	
+	
+}
+
+.modal-bg.active{
+	display: block;
 	
 }
 
@@ -23,4 +28,8 @@
 	transform: translateX(-50%); /* 본인의 가로값(width)의 50% 만큼 이동 */
 	padding: 30px 20px 30px 20px;
 	
+}
+
+.modal-content input {
+	height: 35px;
 }
