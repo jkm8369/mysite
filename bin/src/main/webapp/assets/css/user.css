@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/********************************************************************   
+ * user.css
+ * 
+ * mysite에서 회원가입, 로그인, 회원정보수정 등
+ * 회원 관련 페이지에서 사용하는 css 파일
+ * 
+ * 이 파일은 회원가입폼, 회원정보 수정폼, 로그인폼 등
+ * 사용자 관련 페이지의 스타일을 정의합니다.
+ * 
+ * 주의: 이 파일은 reset.css와 mysite.css 이후에 로드되어야 합니다.
+ *********************************************************************/
+
+/* 회원가입폼 ******************************************************************/
+#user-joinform .form-box {
+    width: 550px;
+    margin: 0px auto;
+    padding: 30px 10px 30px 10px;
+    border: 1px solid #A6A6A6;
+}
+
+#user-joinform .form-box .info-row {
+    padding: 10px 0px 10px 0px;
+}
+
+#user-joinform .form-box .info-row .info-title {
+    display: inline-block;
+    width: 180px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+#user-joinform .form-box .info-row input[type="text"],
+#user-joinform .form-box .info-row input[type="password"] {
+    width: 170px;
+    height: 30px;
+    padding: 3px 3px 3px 3px;
+    vertical-align: middle;
+}
+
+#user-joinform .form-box .info-row input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#user-joinform .form-box .info-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+#user-joinform .form-box .btn-group {
+    padding: 40px 0px 0px 0px;
+    text-align: center;
+}
+/* //회원가입폼 ****************************************************************/
+
+
+
+/* 회원정보 수정폼 ****************************************************************/
+#user-editform .form-box {
+    width: 550px;
+    margin: 0px auto;
+    padding: 30px 10px 30px 10px;
+    border: 1px solid #A6A6A6;
+}
+
+#user-editform .form-box .info-row {
+    padding: 10px 0px 10px 0px;
+}
+
+#user-editform .form-box .info-row .info-title {
+    display: inline-block;
+    width: 180px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+#user-editform .form-box .info-row #txt-id {
+    display: inline-block;
+}
+
+#user-editform .form-box .info-row input[type="text"],
+#user-editform .form-box .info-row input[type="password"] {
+    width: 170px;
+    height: 30px;
+}
+
+#user-editform .form-box .info-row input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+#user-editform .form-box .btn-group {
+    padding: 40px 0px 0px 0px;
+    text-align: center;
+}
+/* //회원정보 수정폼 ****************************************************************/
+
+
+
+/* 로그인폼 ************************************************************************/
+#user-loginform .form-box {
+    width: 550px;
+    margin: 0px auto;
+    padding: 30px 10px 30px 10px;
+    border: 1px solid #A6A6A6;
+}
+
+#user-loginform .form-box .info-row {
+    padding: 10px 0px 10px 0px;
+}
+
+#user-loginform .form-box .info-row .info-title {
+    display: inline-block;
+    width: 180px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+#user-loginform .form-box .info-row input[type="text"],
+#user-loginform .form-box .info-row input[type="password"] {
+    width: 170px;
+    height: 30px;
+}
+
+#user-loginform .form-box .btn-group {
+    padding: 40px 0px 0px 0px;
+    text-align: center;
+}
+/* //로그인폼 *********************************************************************/
+
+
+/* 회원가입 ok *********************************************************************/
+#user-joinok .complete-box {
+    width: 550px;
+    margin: 0px auto;
+    padding: 70px 10px 130px 10px;
+    border: 1px solid #A6A6A6;
+    text-align: center;
+}
+
+#user-joinok .complete-box p {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+/* //회원가입 ok *********************************************************************/

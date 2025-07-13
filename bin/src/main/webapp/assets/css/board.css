@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+/********************************************************************   
+ * board.css
+ * 
+ * mysite에서 게시판 관련 페이지에서 사용하는 css 파일
+ * 
+ * 이 파일은 게시판 리스트, 글쓰기 폼, 수정 폼, 읽기 페이지 등
+ * 게시판 관련 페이지의 스타일을 정의합니다.
+ * 
+ * 주의: 이 파일은 reset.css와 mysite.css 이후에 로드되어야 합니다.
+ *********************************************************************/
+
+
+/* 게시판리스트 *********************************************************************/
+/* 검색창 */
+#board-list form {
+    padding-bottom: 5px;
+    text-align: right;
+}
+
+#board-list form input[name="kwd"]{
+    width: 150px;
+    height: 30px;
+    padding: 3px;
+    vertical-align: middle;
+}
+
+#board-list form #btn-search{
+    width: 60px;
+    height: 30px;
+}
+
+/* 리스트 */
+#board-list table{
+    text-align: center;
+}
+
+#board-list table>thead>tr{
+    border-top: 2px solid #A6A6A6;
+    border-bottom: 2px solid #A6A6A6;
+    background-color: #DDDDDD;
+}
+
+#board-list table>thead>tr>th{
+    padding: 10px 0px 10px 0px;
+    font-weight: bold;
+}
+
+#board-list table>tbody>tr>td{
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #A6A6A6;
+}
+
+#board-list table>tbody>tr:hover{
+    background-color: #d3e6ff;
+}
+
+/* 페이징 */
+#board-list .paging{
+    padding: 10px;
+}
+
+#board-list .paging ul{
+    width: 300px;
+    margin: 0 auto;
+}
+
+#board-list .paging ul>li{
+    float: left;
+    width: 25px;
+    text-align: center;
+}
+
+#board-list .paging ul>li.active{
+    font-weight: bold;
+    color: #fff;
+    background-color: #005cc8;
+}
+
+#board-list .btn-box {
+    text-align: right;
+}
+/* //게시판리스트 *********************************************************************/
+
+
+/* 글쓰기폼 *********************************************************************/
+#board-writeform .form-box .info-row {
+    padding: 10px 0px 10px 0px;
+}
+
+/* 폼태그 라벨(제목) */
+#board-writeform .form-box .info-row .info-title{
+    display: inline-block;  /* 인라인 요소 가로폭을 주려고 */
+    width: 50px;
+    text-align: left;
+}
+
+/* 폼태그(제목) */
+#board-writeform .form-box .info-row #txt-title {
+    width: 765px;
+    height: 30px;
+    padding: 3px;
+}
+
+/* 폼태그(내용) */
+#board-writeform .form-box .info-row #txt-content {
+    width: 819px;
+    height: 400px;
+    padding: 3px;
+}
+
+/* 하단 버튼 박스 */
+#board-writeform .form-box .btn-box {
+    text-align: right;
+}
+/* //글쓰기폼 *********************************************************************/
+
+
+/* 수정폼 ***********************************************************************/
+#board-editform .form-box .info-row {
+    padding: 10px 0px 10px 0px;
+}
+
+/* 폼태그 라벨(제목) */
+#board-editform .form-box .info-row .info-title {
+    display: inline-block;  /* 인라인 요소 가로폭을 주려고 */
+    width: 50px;
+    text-align: left;
+}
+
+/* 폼태그(제목) */
+#board-editform .form-box .info-row #txt-title {
+    width: 765px;
+    height: 30px;
+    padding: 3px;
+}
+
+
+/* 폼태그(내용) */
+#board-editform .info-row #txt-content {
+    width: 819px;
+    height: 400px;
+    padding: 3px;
+}
+
+/* 하단 버튼 박스 */
+#board-editform .form-box .btn-box {
+    text-align: right;
+}
+/* //수정폼 ****************************************************************/
+
+
+/* 읽기 ******************************************************************/
+#board-read .info-row{
+    padding: 10px 0px 10px 0px;
+}
+
+#board-read .info-row .info-title {
+    display: inline-block;  /* 인라인 요소 가로폭을 주려고 */
+    width: 50px;
+    text-align: left;
+}
+
+#board-read .info-row .outline {
+    background-color: #f7f7f7;
+    padding: 10px;;
+}
+
+
+/* 하단 버튼 박스 */
+#board-read .btn-box {
+    text-align: right;
+}
+/* //읽기 ******************************************************************/
+
