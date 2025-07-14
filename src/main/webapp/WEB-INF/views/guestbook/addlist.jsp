@@ -20,13 +20,9 @@
 			<!-- /header + nav ---------------------------------------------->
 		
             <div class="content2 clearfix">
-                <aside>
-                    <h2>방명록</h2>
-                    <ul>
-                        <li><a href="">일반방명록</a></li>
-                        <li><a href="">ajax방명록</a></li>
-                    </ul>
-                </aside>
+               	<!-- 방명록 aside -->
+				<c:import url="/WEB-INF/views/include/asideGuestbook.jsp"></c:import>
+				<!-- /방명록 aside -->
 
 				<main>
 					

@@ -14,6 +14,7 @@ public class GuestbookRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//전체 데이터 가져오기
 	public List<GuestbookVO> guestbookSelect() {
 		System.out.println("GuestbookRepository.guestbookSelect()");
 		
@@ -22,6 +23,7 @@ public class GuestbookRepository {
 		return guestbookList;
 	}
 	
+	//저장하기
 	public int guestbookInsert(GuestbookVO guestbookVO) {
 		System.out.println("GuestbookRepository.guestbookList()");
 		
@@ -30,6 +32,7 @@ public class GuestbookRepository {
 		return count;
 	}
 	
+	//삭제하기
 	public int guestbookDelete(GuestbookVO guestbookVO) {
 		System.out.println("GuestbookRepository.guestbookDelete()");
 		
