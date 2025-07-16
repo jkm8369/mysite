@@ -8,47 +8,20 @@
     <head>
         <meta charset="UTF-8">
         <title>MySite</title>
-        <link rel="stylesheet" href="../../assets/css/reset.css">
-        <link rel="stylesheet" href="../../assets/css/mysite.css">
-        <link rel="stylesheet" href="../../assets/css/gallery.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mysite.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/gallery.css">
+        <script src="${pageContext.request.contextPath}/assets/js/jquery/jquery-3.7.1.js"></script>
     </head>
 
     <body>
       <div class="wrap">
-            <header class="clearfix">
-                <h1><a href="">MySite</a></h1>
+            <!-- 해더 + 네비 ------------------------------------>
+            <c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+            <!-- 해더 + 네비 ----->
               
                
-			    <ul class="clearfix">
-				    <li><span class="user-welcome">황일영 님 안녕하세요^^</span></li>
-				    <li>
-                        <a class="btn btn-white btn-sm" href="">로그아웃</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">회원정보수정</a>
-                    </li>
-			    </ul>
-               
-                  <!--	
-               <ul class="clearfix">
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">로그인</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">회원가입</a>
-                    </li>
-                </ul>
-                 -->
-            </header>
-
-            <nav>
-                <ul class="clearfix">
-                    <li><a href="">입사지원서</a></li>
-                    <li><a href="">게시판</a></li>
-                    <li><a href="">갤러리</a></li>
-                    <li><a href="">방명록</a></li>
-                </ul>
-            </nav>
+			    
 
             <div class="content2 clearfix">
                 <aside>
@@ -71,60 +44,27 @@
 
                     <div id="gallery-list">
                         <div class="btn-box">
-                            <button class="btn btn-blue btn-md" type="submit">이미지올리기</button>
+                            <button id="uploadBtn" class="btn btn-blue btn-md" type="submit">이미지올리기</button>
                         </div>
                         
                         <ul class="clearfix">
 							
 							<!-- 이미지반복영역 -->
-                            <li>
-                                <div class="card" >
-                                    <img src="../../assets/images/Gangho-dong.jpg">
-                                    <div class="writer">
-                                        작성자: <strong>유재석</strong>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card" >
-                                    <img src="../../assets/images/Gangho-dong.jpg">
-                                    <div class="writer">
-                                        작성자: <strong>유재석</strong>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card" >
-                                    <img src="../../assets/images/Gangho-dong.jpg">
-                                    <div class="writer">
-                                        작성자: <strong>유재석</strong>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card" >
-                                    <img src="../../assets/images/Gangho-dong.jpg">
-                                    <div class="writer">
-                                        작성자: <strong>유재석</strong>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card" >
-                                    <img src="../../assets/images/Gangho-dong.jpg">
-                                    <div class="writer">
-                                        작성자: <strong>유재석</strong>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card" >
-                                    <img src="../../assets/images/Gangho-dong.jpg">
-                                    <div class="writer">
-                                        작성자: <strong>유재석</strong>
-                                    </div>
-                                </div>
-                            </li>
+							<form action="${pageContext.request.contextPath}/gallery/upload" method="post" enctype="multipart/form-data">
+								<c:forEach items="${requestScope.galleryList}" var="galleryVO">
+									 <li>
+		                                <div class="card" >
+		                                    <img src="${pageContext.request.contextPath}/upload/${saveName}">
+		                                    <div class="writer">
+		                                        작성자: <strong>유재석</strong>
+		                                    </div>
+		                                </div>
+	                            	 </li>
+								</c:forEach>
+							</form>
+							
+                           
+                            
 							<!-- 이미지반복영역 -->
 							
 						</ul>
@@ -133,11 +73,9 @@
                 </main>
             </div>
             
-            <footer>
-                <p>
-                    Copyright ⓒ 2025 황일영. All right reserved  
-                </p>
-            </footer>
+            <!-- footer -->
+			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+			<!-- //footer -->
 
         </div>
 
@@ -189,7 +127,7 @@
 		<p class="title">이미지보기 모달창</p>
 		
 		<div id="img-view">
-            <img src="../../assets/images/Gangho-dong.jpg">
+            <img src="${pageContext.request.contextPath}/assets/images/Gangho-dong.jpg">
 
 
             <div class="img-content">
@@ -207,6 +145,29 @@
 
 </div>
 
+
+<script>
+//돔트리가 완료되었을 때
+$(document).ready(function(){
+	console.log('돔트리');
+	//이미지올리기 버튼 클릭했을 때
+	$('#uploadBtn').on('click', function(){
+		console.log('이미지올리기 버튼 클릭');
+		
+		
+		
+		
+	});
+	
+	
+	
+});
+	
+	
+	
+	
+
+</script>
 
     </body>
 </html>

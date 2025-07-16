@@ -45,7 +45,7 @@
                     </div>
 
                     <div id="user-joinform">
-                        <!-- http://localhost:8888/user/join  ?   id=ddd& password=123 & name=정우성 & gender=male metho="post"하면 주소 안남는다 -->
+                        <!-- http://localhost:8888/user/join  ?   id=ddd& password=123 & name=정우성 & gender=male method="post"하면 주소 안남는다 -->
                         <form class="form-box" action="/user/join" method="get">
                             <div class="info-row">
                                 <label class="info-title" for="txt-idcheck">아이디</label>

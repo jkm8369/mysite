@@ -5,17 +5,18 @@ public class GalleryVO {
 	private int no;
 	private int userNo;
 	private String content;
+	
 	private String filePath;
 	private String orgName;
 	private String saveName;
-	private String fileSize;
+	private int fileSize;
 	
 	public GalleryVO() {
 		super();
 	}
 
 	public GalleryVO(int no, int userNo, String content, String filePath, String orgName, String saveName,
-			String fileSize) {
+			int fileSize) {
 		super();
 		this.no = no;
 		this.userNo = userNo;
@@ -74,11 +75,11 @@ public class GalleryVO {
 		this.saveName = saveName;
 	}
 
-	public String getFileSize() {
+	public int getFileSize() {
 		return fileSize;
 	}
 
-	public void setFileSize(String fileSize) {
+	public void setFileSize(int fileSize) {
 		this.fileSize = fileSize;
 	}
 
@@ -87,6 +88,7 @@ public class GalleryVO {
 		return "GalleryVO [no=" + no + ", userNo=" + userNo + ", content=" + content + ", filePath=" + filePath
 				+ ", orgName=" + orgName + ", saveName=" + saveName + ", fileSize=" + fileSize + "]";
 	}
+	
 	
 	
 	

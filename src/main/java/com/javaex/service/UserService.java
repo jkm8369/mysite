@@ -34,7 +34,7 @@ public class UserService {
 		return authUser;
 	}
 	
-	//회원정보 폼
+	//회원정보수정폼
 	public UserVO exeEditForm(int no) {
 		System.out.println("userService.exeEditForm()");
 		

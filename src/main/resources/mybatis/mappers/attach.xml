@@ -3,10 +3,10 @@
 
 <mapper namespace="attach">
 	
-	<insert id="insert" parameterType="com.javaex.vo.FileVO">
+	<insert id="insert" parameterType="com.javaex.vo.GalleryVO">
 		<![CDATA[
 			insert into file 
-			values(null, #{orgName},#{exName},#{saveName},#{filePath},#{fileSize})
+			values(null, #{orgName},#{saveName},#{filePath},#{fileSize})
 		]]>
 	</insert>
 	

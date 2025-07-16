@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.AttachService;
+import com.javaex.vo.FileVO;
 
 @Controller
 public class AttachController {
@@ -36,7 +37,7 @@ public class AttachController {
 	public String upload(@RequestParam(value="file") MultipartFile file, Model model) {
 		System.out.println("AttachController.upload()");
 		
-		String saveName = attachService.exeUpload(file);
+		FileVO saveName = attachService.exeUpload(file);
 		
 		model.addAttribute("saveName", saveName);
 		

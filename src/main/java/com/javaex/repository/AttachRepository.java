@@ -15,7 +15,7 @@ public class AttachRepository {
 	public int uploadInsert(FileVO fileVO) {
 		System.out.println("AttachRepository.uploadInsert()");
 		
-		int count = sqlSession.insert("attach.insert", fileVO);
+		int count = sqlSession.insert("gallery.insert", fileVO);
 		
 		//System.out.println(count);
 		

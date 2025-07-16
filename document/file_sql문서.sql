@@ -4,7 +4,7 @@ create table file(
     ex_name		varchar(200),
     save_name  	varchar(200),
     file_path	varchar(200),
-    file_size 	long
+    file_size 	int
 );
 
 drop table file;

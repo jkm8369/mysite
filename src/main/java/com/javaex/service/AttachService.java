@@ -23,7 +23,7 @@ public class AttachService {
 	//생성자 메소드gs
 	
 	//메소드 일반
-	public String exeUpload(MultipartFile file) {
+	public FileVO exeUpload(MultipartFile file) {
 		System.out.println("AttachService.exeUpload()");
 		String saveDirectory = "C:\\javaStudy\\upload\\";
 		
@@ -32,12 +32,12 @@ public class AttachService {
 		String orgName = file.getOriginalFilename();
 		System.out.println(orgName);
 		
-		//확장자
+		//확장자(extension)
 		//int index = orgName.lastIndexOf(".");
 		String exName = orgName.substring(orgName.lastIndexOf(".")+1);
 		System.out.println(exName);
 		
-		//저장 파일명(겹치지 않는 파일명 - 덮어쓰기 방지용)
+		//저장 파일명(겹치지 않는 파일명, 덮어쓰기 방지용)
 		//System.out.println(System.currentTimeMillis());
 		//System.out.println(UUID.randomUUID().toString());
 		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + "." + exName;
@@ -48,21 +48,20 @@ public class AttachService {
 		System.out.println(filePath);
 		
 		//파일 사이즈
-		long fileSize = file.getSize();
+		int fileSize = (int)file.getSize();
 		System.out.println(fileSize);
 		
 		//vo에 묶는다 --> db저장
-		FileVO fileVO = new FileVO(orgName, exName, saveName, filePath, fileSize);
+		FileVO fileVO = new FileVO(orgName, saveName, filePath, fileSize);
 		System.out.println(fileVO);
 		
-		//--> db저장
-		//과제(주황색)
-		int count = attachRepository.uploadInsert(fileVO);
+		attachRepository.uploadInsert(fileVO);
 		
 		//System.out.println(count);
 		
 		//(2)실물 파일을 하드디스크에 저장
 		try {
+			
 			byte[] fileData = file.getBytes();
 			
 			OutputStream os = new FileOutputStream(filePath);
@@ -77,7 +76,7 @@ public class AttachService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return saveName;
+		return fileVO;
 		
 		
 	}
