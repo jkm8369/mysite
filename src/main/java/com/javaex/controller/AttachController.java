@@ -37,7 +37,7 @@ public class AttachController {
 	public String upload(@RequestParam(value="file") MultipartFile file, Model model) {
 		System.out.println("AttachController.upload()");
 		
-		FileVO saveName = attachService.exeUpload(file);
+		String saveName = attachService.exeUpload(file);
 		
 		model.addAttribute("saveName", saveName);
 		

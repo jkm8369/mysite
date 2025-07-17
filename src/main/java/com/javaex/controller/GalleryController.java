@@ -1,8 +1,11 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,7 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.AttachService;
 import com.javaex.service.GalleryService;
-import com.javaex.vo.FileVO;
+import com.javaex.vo.GalleryVO;
+import com.javaex.vo.UserVO;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class GalleryController {
@@ -27,17 +33,29 @@ public class GalleryController {
 	public String galleryList(Model model) {
 		System.out.println("GalleryController.gallerylist()");
 		
+		List<GalleryVO> galleryList = galleryService.exeGalleryList();
+		
+		model.addAttribute("galleryList", galleryList);
+		
 		return "gallery/list";
 	}
 	
 	//업로드
 	@RequestMapping(value="/gallery/upload", method= {RequestMethod.GET, RequestMethod.POST})
-	public String galleryUpload(@RequestParam(value="file") MultipartFile file, Model model) {
+	public String galleryUpload(@RequestParam(value="file") MultipartFile file, 
+								Model model,
+								@ModelAttribute GalleryVO galleryVO,
+								HttpSession Session) {
+		
 		System.out.println("GalleryController.galleryUpload()");
 		
-		FileVO fileVO = attachService.exeUpload(file);
+		UserVO authUser = (UserVO)Session.getAttribute("authUser");
 		
-		System.out.println(fileVO);
+		String saveName = attachService.exeUpload(file);
+		String filePath = "C:\\javaStudy\\upload\\";
+		String orgName = file.getOriginalFilename();
+		long fileSize = file.getSize();
+		
 		
 		
 		return "";

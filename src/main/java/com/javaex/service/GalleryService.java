@@ -26,7 +26,7 @@ public class GalleryService {
 	}
 	
 	public void exeGalleryUpload() {
-		
+		System.out.println("GalleryService.exeGalleryUpload()");
 		
 		
 	}

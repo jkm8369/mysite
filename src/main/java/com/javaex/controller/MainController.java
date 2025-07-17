@@ -40,8 +40,8 @@ public class MainController {
 	}
 	*/
 	
-	/*
-	@RequestMapping(value="/{id}/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+	
+	@RequestMapping(value="/main/{id}/{no}", method= {RequestMethod.GET, RequestMethod.POST})
 	public String index2(@PathVariable(value="id")String id, 
 						 @PathVariable(value="no") int no) {
 		System.out.println("MainController.index()");
@@ -54,7 +54,7 @@ public class MainController {
 		
 		return "main/index";
 	}
-	*/
+	
 	
 	
 }

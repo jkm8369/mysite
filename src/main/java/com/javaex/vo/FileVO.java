@@ -3,6 +3,7 @@ package com.javaex.vo;
 public class FileVO {
 	
 	private String orgName;
+	private String exName;
 	private String saveName;
 	private String filePath;
 	private long fileSize;
@@ -11,9 +12,10 @@ public class FileVO {
 		super();
 	}
 
-	public FileVO(String orgName, String saveName, String filePath, long fileSize) {
+	public FileVO(String orgName, String exName, String saveName, String filePath, long fileSize) {
 		super();
 		this.orgName = orgName;
+		this.exName = exName;
 		this.saveName = saveName;
 		this.filePath = filePath;
 		this.fileSize = fileSize;
@@ -27,6 +29,13 @@ public class FileVO {
 		this.orgName = orgName;
 	}
 
+	public String getExName() {
+		return exName;
+	}
+
+	public void setExName(String exName) {
+		this.exName = exName;
+	}
 
 	public String getSaveName() {
 		return saveName;
@@ -54,10 +63,9 @@ public class FileVO {
 
 	@Override
 	public String toString() {
-		return "FileVO [orgName=" + orgName + ", saveName=" + saveName + ", filePath=" + filePath
+		return "FileVO [orgName=" + orgName + ", exName=" + exName + ", saveName=" + saveName + ", filePath=" + filePath
 				+ ", fileSize=" + fileSize + "]";
 	}
-	
 	
 	
 }

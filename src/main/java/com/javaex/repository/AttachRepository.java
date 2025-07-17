@@ -22,6 +22,11 @@ public class AttachRepository {
 		return count;
 	}
 	
+	public void GalleryInsert() {
+		System.out.println("AttachRepository.GalleryInsert()");
+		
+		
+	}
 	
 	
 }

@@ -50,18 +50,18 @@
                         <ul class="clearfix">
 							
 							<!-- 이미지반복영역 -->
-							<form action="${pageContext.request.contextPath}/gallery/upload" method="post" enctype="multipart/form-data">
-								<c:forEach items="${requestScope.galleryList}" var="galleryVO">
-									 <li>
-		                                <div class="card" >
-		                                    <img src="${pageContext.request.contextPath}/upload/${saveName}">
-		                                    <div class="writer">
-		                                        작성자: <strong>유재석</strong>
-		                                    </div>
-		                                </div>
-	                            	 </li>
-								</c:forEach>
-							</form>
+							
+							<c:forEach items="${requestScope.galleryList}" var="galleryVO">
+								 <li>
+	                                <div class="card" >
+	                                    <img src="${pageContext.request.contextPath}/upload/${galleryListsaveName}">
+	                                    <div class="writer">
+	                                        작성자: <strong>유재석</strong>
+	                                    </div>
+	                                </div>
+                            	 </li>
+							</c:forEach>
+						
 							
                            
                             
