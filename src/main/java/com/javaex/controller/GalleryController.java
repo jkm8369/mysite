@@ -56,6 +56,10 @@ public class GalleryController {
 		String orgName = file.getOriginalFilename();
 		long fileSize = file.getSize();
 		
+		galleryVO.setSaveName(saveName);
+		galleryVO.setFilePath(filePath);
+		galleryVO.setOrgName(orgName);
+		galleryVO.setFileSize(fileSize);
 		
 		
 		return "";
