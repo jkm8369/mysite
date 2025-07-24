@@ -27,15 +27,22 @@ public class AttachService {
       System.out.println("AttachService.exeUpload()");
       
       String osName = System.getProperty("os.name").toLowerCase();    //toLowerCase() 소문자로 다 바꿈
-      System.out.println(osName);
       
       //파일 저장 경로
+      String saveDir = "";
+      
+      if(osName.contains("win")) {  //윈도우면
+    	  System.out.println("지금 os 윈도우");
+    	  saveDir = "C:\\javaStudy\\\\upload\\";
+      } else {   //리눅스면
+    	  saveDir = "/data/upload/";
+      }
       
       //만약 윈도우면
       //String saveDirectory = "C:\\javaStudy\\upload\\";
       
       //나머지(리눅스)면
-      String saveDirectory = "/data/upload/";
+      //String saveDirectory = "/data/upload/";
       
       //(1)파일정보를 추출 저장(DB)
       //오리지널 파일명
@@ -54,8 +61,9 @@ public class AttachService {
       System.out.println(saveName);
       
       //파일 경로
-      String filePath = saveDirectory + saveName;
-      System.out.println(filePath);
+      String filePath = saveDir + saveName;
+      //String filePath = saveDirectory + saveName;
+      //System.out.println(filePath);
       
       //파일 사이즈
       long fileSize = file.getSize();
