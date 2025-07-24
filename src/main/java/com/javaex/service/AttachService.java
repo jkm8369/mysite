@@ -60,7 +60,7 @@ public class AttachService {
       
       //--> db저장
       //과제(주황색)
-      int count = attachRepository.uploadInsert(fileVO);
+      //int count = attachRepository.uploadInsert(fileVO);
       
       //System.out.println(count);
       
