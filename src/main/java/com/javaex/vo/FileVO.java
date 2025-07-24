@@ -8,6 +8,10 @@ public class FileVO {
 	private String filePath;
 	private long fileSize;
 	
+	
+
+
+
 	public FileVO() {
 		super();
 	}
@@ -60,6 +64,7 @@ public class FileVO {
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
+
 
 	@Override
 	public String toString() {

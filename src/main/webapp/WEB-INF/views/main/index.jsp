@@ -27,7 +27,7 @@
                         <img class="profile" src="${pageContext.request.contextPath}/assets/images/profile.jpg">
                         <div class="greeting-box">
                             <p class="greeting">
-                                안녕하세요!!<br>
+                                안녕하세요!! [v03]<br>
                                 황일영의 MySite에 오신 것을 환영합니다.<br>
                                 <br>
                                 이 사이트는 웹 프로그램밍 실습과제 예제 사이트입니다.

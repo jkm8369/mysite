@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.AttachService;
-import com.javaex.vo.FileVO;
 
 @Controller
 public class AttachController {

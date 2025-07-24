@@ -3,21 +3,38 @@
 
 <mapper namespace="gallery">
 
-	<insert id="insert">
-		insert into gallery
-		values(null, #{userNo}, #{content}, #{filePath}, #{orgName}, #{saveName}, #{fileSize})
+	<!-- 갤러리 전체 리스트(첫 화면) -->
+	<select id="selectList" resultType="com.javaex.vo.GalleryVO">
+		<![CDATA[
+			select  g.no,
+					u.no as userNo,
+			        g.content,
+			        g.file_path as filePath,
+			        g.org_name as orgName,
+			        g.save_name as saveName,
+			        g.file_size as fileSize,
+			        u.name as userName
+			from gallery g, users u
+			where g.user_no = u.no 
+			order by g.no desc
+		]]>
+	</select>
+	
+	<!-- 갤러리 업로드 등록(저장) -->
+	<insert id="insert" parameterType="com.javaex.vo.GalleryVO">
+		<![CDATA[
+			insert into gallery
+			values(null, #{userNo}, #{content}, #{filePath}, #{orgName}, #{saveName}, #{fileSize})
+		]]>
 	</insert>
 	
-	<select id="selectList" resultType="com.javaex.vo.GalleryVO">
-		select	no,
-				user_no,
-				content,
-				file_path,
-				org_name,
-				save_name,
-				file_size
-		from gallery
-		order by no desc
-	</select>
+	<!-- 갤러리 삭제 -->
+	<delete id="delete" parameterType="com.javaex.vo.GalleryVO">
+		<![CDATA[
+			delete from gallery
+			where no = #{no}
+			and user_no = #{userNo}
+		]]>
+	</delete>
 	
 </mapper>
