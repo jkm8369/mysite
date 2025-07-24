@@ -17,7 +17,8 @@ public class GalleryService {
 	
 	
 	//메소드 일반
-	//갤러리 전체 리스트(첫 화면)
+	
+	//갤러리 전체 리스트
 	public List<GalleryVO> exeGalleryList() {
 		System.out.println("GalleryService.exeGalleryList()");
 		
