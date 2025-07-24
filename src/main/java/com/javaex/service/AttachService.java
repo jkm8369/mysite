@@ -26,8 +26,15 @@ public class AttachService {
    public String exeUpload(MultipartFile file) {
       System.out.println("AttachService.exeUpload()");
       
+      String osName = System.getProperty("os.name").toLowerCase();    //toLowerCase() 소문자로 다 바꿈
+      System.out.println(osName);
+      
       //파일 저장 경로
+      
+      //만약 윈도우면
       //String saveDirectory = "C:\\javaStudy\\upload\\";
+      
+      //나머지(리눅스)면
       String saveDirectory = "/data/upload/";
       
       //(1)파일정보를 추출 저장(DB)
