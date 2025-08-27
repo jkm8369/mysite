@@ -51,7 +51,7 @@ public class UserController {
 			System.out.println(e);
 			return "redirect:/user/joinform";
 		}
-		
+			
 		
 	}
 	

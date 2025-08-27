@@ -58,7 +58,7 @@ public class GuestbookRepository {
 	public GuestbookVO guestbookSelectOne(int no) {
 		System.out.println("GuestbookRepository.guestbookSelectOne()");
 		
-		GuestbookVO guestbookVO = sqlSession.selectOne("guestbook.selectOne" ,no);
+		GuestbookVO guestbookVO = sqlSession.selectOne("guestbook.selectOne" , no);
 		
 		return guestbookVO;
 		
